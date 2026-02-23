@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DJWaitaminute - Transmission</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&amp;family=Orbitron:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00F0FF", // Neon Electric Blue
+                        "background-light": "#F0F0F0",
+                        "background-dark": "#050508", // Very dark, almost black blue-gray
+                        "surface-dark": "#0A0A0F",
+                        "accent-dark": "#1A1A24"
+                    },
+                    fontFamily: {
+                        display: ["Orbitron", "sans-serif"],
+                        body: ["Montserrat", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "4px",
+                    },
+                    backgroundImage: {
+                        'oscilloscope': "url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", // Fallback abstract tech bg
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glitch': 'glitch 2s infinite',
+                    },
+                    keyframes: {
+                        glitch: {
+                            '0%': { transform: 'translate(0)' },
+                            '20%': { transform: 'translate(-2px, 2px)' },
+                            '40%': { transform: 'translate(-2px, -2px)' },
+                            '60%': { transform: 'translate(2px, 2px)' },
+                            '80%': { transform: 'translate(2px, -2px)' },
+                            '100%': { transform: 'translate(0)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050508; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F0FF; 
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+        .bg-gradient-overlay {
+            background: radial-gradient(circle at center, transparent 0%, #050508 90%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-body transition-colors duration-300 antialiased selection:bg-primary selection:text-black">
+<nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/70 dark:bg-background-dark/80 border-b border-gray-200 dark:border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex-shrink-0 flex items-center group cursor-pointer">
+<div class="relative w-10 h-10 mr-3">
+<svg class="w-full h-full fill-current text-slate-800 dark:text-white group-hover:text-primary transition-colors duration-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L4 7v6c0 5.55 3.84 10.74 9 12 2.3-.56 4.33-1.9 5.88-3.71l-5.88-3.53V11h5.83c.11-.64.17-1.3.17-2V7l-8-5zm0 2.18l6 3.75v1.07h-6V4.18zM12 13l4.65 2.79c-.96 1.1-2.18 1.96-3.65 2.51V13z"></path> 
+</svg>
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-40 blur-lg rounded-full transition-opacity duration-300"></div>
+</div>
+<span class="font-display font-bold text-xl tracking-wider text-slate-900 dark:text-white group-hover:text-glow transition-all">DJ<span class="text-primary">WAITAMINUTE</span></span>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-8">
+<a class="font-display text-sm font-medium hover:text-primary transition-colors duration-300 uppercase tracking-widest text-slate-600 dark:text-slate-300" href="#">Music</a>
+<a class="font-display text-sm font-medium hover:text-primary transition-colors duration-300 uppercase tracking-widest text-slate-600 dark:text-slate-300" href="#">Tour</a>
+<a class="font-display text-sm font-medium hover:text-primary transition-colors duration-300 uppercase tracking-widest text-slate-600 dark:text-slate-300" href="#">Merch</a>
+<a class="font-display text-sm font-medium hover:text-primary transition-colors duration-300 uppercase tracking-widest text-slate-600 dark:text-slate-300" href="#">About</a>
+</div>
+</div>
+<div class="hidden md:block">
+<a class="relative px-6 py-2 bg-transparent border border-slate-900 dark:border-white text-slate-900 dark:text-white font-display text-sm font-bold uppercase tracking-wider hover:bg-primary hover:border-primary hover:text-black hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] transition-all duration-300 group overflow-hidden" href="#book">
+<span class="relative z-10">Subscribe</span>
+<div class="absolute inset-0 h-full w-full bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out -z-0"></div>
+</a>
+</div>
+<div class="-mr-2 flex md:hidden">
+<button class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" type="button">
+<span class="sr-only">Open main menu</span>
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden bg-background-light dark:bg-background-dark">
+<div class="absolute inset-0 z-0">
+<img alt="Abstract dark oscilloscope waves background" class="w-full h-full object-cover opacity-20 dark:opacity-40 grayscale contrast-125 brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCubVLKzS4hOD-NLSHtjSZYT7lwx3CuES_--OA7XLE5mCuzV3nnlZlGr-IEJVV0SpEtpg_zZvjFU8yIS9zIdeot_3X9t6gMMZzqdLjHIIbPzV-c2B-AGIQ5HC5zJQWD1W977enchukcm6zoIphgU-9Hc_I6iRSoNiNHDIc0cGRCeobC-b76_dfON--4SbVrs-7yWnqX9oJrdZh2ENfV5B3ZCfhigJQe3wQVKuJBS8yo7z4igs9LjDpG6Q41I1eV8THMmJjFCPYBtw"/>
+<div class="absolute inset-0 bg-noise opacity-30 mix-blend-overlay"></div>
+<div class="absolute inset-0 bg-gradient-overlay"></div>
+<div class="absolute top-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+<div class="absolute bottom-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+</div>
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[20%] right-[10%] w-64 h-64 border border-white/5 rounded-full animate-pulse-slow"></div>
+<div class="absolute bottom-[10%] left-[5%] w-96 h-96 border border-primary/10 rounded-full animate-pulse-slow animation-delay-2000"></div>
+<svg class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-10 dark:opacity-20 stroke-white/20 fill-none" viewBox="0 0 100 100">
+<polygon points="50 1, 95 25, 95 75, 50 99, 5 75, 5 25" stroke-width="0.2"></polygon>
+<polygon points="50 10, 85 30, 85 70, 50 90, 15 70, 15 30" stroke-width="0.1"></polygon>
+</svg>
+</div>
+<div class="relative z-10 container mx-auto px-4 text-center mt-16">
+<div class="mb-6 flex justify-center items-center space-x-2">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+<p class="font-display text-xs md:text-sm tracking-[0.3em] uppercase text-primary font-bold">Signal Locked: Transmission Live</p>
+</div>
+<h1 class="font-display font-black text-5xl md:text-7xl lg:text-9xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-slate-800 to-slate-400 dark:from-white dark:to-slate-500 mb-2 leading-none">
+                TRANSMISSION
+            </h1>
+<div class="flex flex-wrap justify-center items-center gap-3 md:gap-6 mb-12">
+<span class="text-sm md:text-lg font-bold tracking-widest uppercase text-slate-600 dark:text-slate-400">Drum &amp; Bass</span>
+<span class="hidden md:inline-block w-1 h-1 bg-primary rounded-full"></span>
+<span class="text-sm md:text-lg font-bold tracking-widest uppercase text-slate-600 dark:text-slate-400">Jungle</span>
+<span class="hidden md:inline-block w-1 h-1 bg-primary rounded-full"></span>
+<span class="text-sm md:text-lg font-bold tracking-widest uppercase text-slate-600 dark:text-slate-400">Liquid</span>
+<span class="hidden md:inline-block w-1 h-1 bg-primary rounded-full"></span>
+<span class="text-sm md:text-lg font-bold tracking-widest uppercase text-slate-600 dark:text-slate-400">Neurofunk</span>
+</div>
+<div class="flex flex-col md:flex-row justify-center items-center gap-6">
+<button class="group relative px-8 py-4 bg-primary text-black font-display font-bold text-lg uppercase tracking-widest clip-path-slant hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.6)]">
+<span class="flex items-center gap-2">
+                        Book DJWaitaminute
+                        <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+<div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+<a class="group flex items-center gap-3 px-8 py-4 border border-slate-300 dark:border-white/20 text-slate-800 dark:text-white font-display font-bold text-lg uppercase tracking-widest hover:border-primary hover:text-primary transition-all duration-300 bg-white/5 backdrop-blur-sm" href="#latest-mix">
+<span class="material-symbols-outlined text-2xl group-hover:animate-pulse">play_circle</span>
+                    Latest Mix
+                </a>
+</div>
+<div class="absolute bottom-10 left-0 w-full flex flex-col items-center justify-center opacity-70 animate-bounce hidden md:flex">
+<span class="text-xs uppercase tracking-widest mb-2 text-slate-500 dark:text-slate-400">Scroll to Initiate</span>
+<span class="material-symbols-outlined text-primary">keyboard_double_arrow_down</span>
+</div>
+</div>
+<div class="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 w-[1px] h-64 bg-gradient-to-b from-transparent via-slate-400 dark:via-white/20 to-transparent"></div>
+<div class="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 font-mono text-[10px] text-slate-400 dark:text-white/30 -translate-x-4 rotate-180" style="writing-mode: vertical-rl;">
+            SYS.402 // FREQUENCY.MOD
+        </div>
+<div class="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2 w-[1px] h-64 bg-gradient-to-b from-transparent via-slate-400 dark:via-white/20 to-transparent"></div>
+<div class="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2 font-mono text-[10px] text-slate-400 dark:text-white/30 translate-x-4" style="writing-mode: vertical-rl;">
+            BPM: 174 // STATUS: ACTIVE
+        </div>
+</header>
+<section class="py-20 bg-white dark:bg-[#0A0A0F] border-t border-slate-200 dark:border-white/5 relative z-20">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-slate-200 dark:border-white/10 pb-4">
+<h2 class="font-display font-bold text-4xl md:text-5xl text-slate-900 dark:text-white uppercase tracking-tighter">Upcoming <span class="text-primary">Dates</span></h2>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm uppercase tracking-widest font-bold mt-4 md:mt-0 flex items-center gap-1 transition-colors" href="#">
+                    View Full Calendar <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+<div class="flex flex-col space-y-1">
+<div class="group relative flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-slate-50 dark:bg-[#111116] border-l-2 border-transparent hover:border-primary transition-all duration-300 hover:bg-slate-100 dark:hover:bg-[#16161e]">
+<div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-12 flex-grow">
+<div class="min-w-[120px]">
+<p class="font-display font-bold text-xl text-slate-900 dark:text-white">MAR 14</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">2026</p>
+</div>
+<div>
+<h3 class="font-display font-bold text-lg md:text-xl text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">Fabric London</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">London, United Kingdom</p>
+</div>
+</div>
+<div class="mt-4 md:mt-0">
+<button class="w-full md:w-auto px-6 py-2 bg-slate-900 dark:bg-white text-white dark:text-black font-bold uppercase text-xs tracking-widest hover:bg-primary dark:hover:bg-primary hover:text-black transition-colors duration-300">
+                            Tickets
+                        </button>
+</div>
+</div>
+<div class="group relative flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-slate-50 dark:bg-[#111116] border-l-2 border-transparent hover:border-primary transition-all duration-300 hover:bg-slate-100 dark:hover:bg-[#16161e]">
+<div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-12 flex-grow">
+<div class="min-w-[120px]">
+<p class="font-display font-bold text-xl text-slate-900 dark:text-white">MAR 21</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">2026</p>
+</div>
+<div>
+<h3 class="font-display font-bold text-lg md:text-xl text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">Rampage Open Air</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Lommel, Belgium</p>
+</div>
+</div>
+<div class="mt-4 md:mt-0">
+<button class="w-full md:w-auto px-6 py-2 bg-slate-900 dark:bg-white text-white dark:text-black font-bold uppercase text-xs tracking-widest hover:bg-primary dark:hover:bg-primary hover:text-black transition-colors duration-300">
+                            Tickets
+                        </button>
+</div>
+</div>
+<div class="group relative flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-slate-50 dark:bg-[#111116] border-l-2 border-transparent hover:border-primary transition-all duration-300 hover:bg-slate-100 dark:hover:bg-[#16161e]">
+<div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-12 flex-grow">
+<div class="min-w-[120px]">
+<p class="font-display font-bold text-xl text-slate-900 dark:text-white">APR 04</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">2026</p>
+</div>
+<div>
+<h3 class="font-display font-bold text-lg md:text-xl text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">Let It Roll Winter</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Prague, Czech Republic</p>
+</div>
+</div>
+<div class="mt-4 md:mt-0">
+<button class="w-full md:w-auto px-6 py-2 border border-slate-300 dark:border-white/20 text-slate-500 dark:text-slate-300 font-bold uppercase text-xs tracking-widest hover:border-primary hover:text-primary transition-colors duration-300">
+                            Notify Me
+                        </button>
+</div>
+</div>
+<div class="group relative flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-slate-50 dark:bg-[#111116] border-l-2 border-transparent hover:border-primary transition-all duration-300 hover:bg-slate-100 dark:hover:bg-[#16161e]">
+<div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-12 flex-grow">
+<div class="min-w-[120px]">
+<p class="font-display font-bold text-xl text-slate-900 dark:text-white">MAY 12</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">2026</p>
+</div>
+<div>
+<h3 class="font-display font-bold text-lg md:text-xl text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors">EDC Las Vegas</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Las Vegas, USA</p>
+</div>
+</div>
+<div class="mt-4 md:mt-0">
+<button class="w-full md:w-auto px-6 py-2 bg-slate-900 dark:bg-white text-white dark:text-black font-bold uppercase text-xs tracking-widest hover:bg-primary dark:hover:bg-primary hover:text-black transition-colors duration-300">
+                            Tickets
+                        </button>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-mono uppercase">
+<span>Powered by</span>
+<span class="font-bold text-slate-700 dark:text-white">Bandsintown</span>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-slate-100 dark:bg-black py-12 border-t border-slate-200 dark:border-white/10">
+<div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="font-display font-bold text-lg text-slate-900 dark:text-white">DJ<span class="text-primary">WAITAMINUTE</span></span>
+<span class="text-xs text-slate-500 dark:text-slate-500">© 2024 All Rights Reserved.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><i class="material-symbols-outlined">mail</i></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><i class="material-symbols-outlined">library_music</i></a> 
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><i class="material-symbols-outlined">video_library</i></a> 
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><i class="material-symbols-outlined">camera_alt</i></a> 
+</div>
+</div>
+</footer>
+
+</body></html>

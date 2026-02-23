@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DJWaitaminute - Broadcast Schedule</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00E5FF", // Neon electric blue
+                        "background-light": "#F3F4F6",
+                        "background-dark": "#121212",
+                        "surface-dark": "#1E1E1E",
+                        "accent-dark": "#2A2A2A",
+                    },
+                    fontFamily: {
+                        display: ["'Chakra Petch'", "sans-serif"],
+                        body: ["'Rajdhani'", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.05\" fill-rule=\"evenodd\"%3E%3Cpath d=\"M0 40L40 0H20L0 20M40 40V20L20 40\"/%3E%3C/g%3E%3C/svg%3E')",
+                    }
+                },
+            },
+        };
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Rajdhani:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+        .glitch-text {
+            position: relative;
+        }
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #121212;
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -1px 0 #00E5FF;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            4.166666667% { clip: rect(91px, 9999px, 43px, 0); }
+            8.333333333% { clip: rect(6px, 9999px, 83px, 0); }
+            100% { clip: rect(69px, 9999px, 9px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(68px, 9999px, 4px, 0); }
+            4.166666667% { clip: rect(8px, 9999px, 73px, 0); }
+            8.333333333% { clip: rect(66px, 9999px, 2px, 0); }
+            100% { clip: rect(24px, 9999px, 40px, 0); }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 font-body transition-colors duration-300 min-h-screen flex flex-col justify-center">
+<nav class="fixed top-0 w-full z-50 bg-white/90 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex-shrink-0 flex items-center gap-2">
+<span class="font-display font-bold text-2xl tracking-widest uppercase">DJWaitaminute</span>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-8">
+<a class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium uppercase tracking-widest" href="#">Home</a>
+<a class="text-primary px-3 py-2 rounded-md text-sm font-medium uppercase tracking-widest" href="#">Schedule</a>
+<a class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium uppercase tracking-widest" href="#">Music</a>
+<a class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium uppercase tracking-widest" href="#">Contact</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<section class="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+<div class="absolute inset-0 z-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+<div class="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-purple-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="mb-16 text-center md:text-left border-b border-gray-300 dark:border-gray-700 pb-8 relative">
+<h2 class="text-5xl md:text-7xl font-display font-bold uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 mb-2 glitch-text" data-text="Broadcast Schedule">
+                    Broadcast Schedule
+                </h2>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-medium tracking-widest uppercase max-w-2xl">
+                        Tune in live for exclusive Drum and Bass sessions.
+                    </p>
+<div class="flex items-center gap-2 text-primary font-bold animate-pulse">
+<span class="material-icons text-sm">radio_button_checked</span>
+<span class="uppercase tracking-widest text-sm">Live Residency</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-32 h-1 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div class="flex items-center justify-between py-4">
+<div class="flex items-center gap-3">
+<span class="material-icons text-gray-400 dark:text-gray-500 text-3xl">podcasts</span>
+<h3 class="text-2xl md:text-3xl font-display font-bold uppercase tracking-wider text-gray-800 dark:text-gray-200">
+                             in2GrooveRadio
+                         </h3>
+</div>
+<a class="text-sm font-mono text-gray-500 dark:text-gray-400 hover:text-primary transition-colors border-b border-transparent hover:border-primary" href="#">
+                        in2grooveradio.com <span class="material-icons text-xs align-middle">open_in_new</span>
+</a>
+</div>
+<div class="group relative bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-6 md:p-8 hover:border-primary/50 transition-all duration-300 overflow-hidden rounded-sm">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="w-full md:w-1/4">
+<span class="block text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-tight">
+                                Tuesdays
+                            </span>
+<span class="inline-block mt-1 px-2 py-0.5 text-xs font-bold bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded uppercase tracking-wider">
+                                Weekly Residency
+                            </span>
+</div>
+<div class="w-full md:w-2/4 flex flex-col gap-1 border-l-2 border-primary/20 pl-4 md:pl-8">
+<div class="flex items-center gap-2 text-primary font-mono text-xl md:text-2xl font-semibold">
+<span class="material-icons text-lg">schedule</span>
+                                5:00 PM – 7:00 PM CST
+                            </div>
+<p class="text-gray-500 dark:text-gray-400 font-medium tracking-wide uppercase text-sm">
+                                Deep Cuts &amp; Liquid Funk
+                            </p>
+</div>
+<div class="w-full md:w-1/4 flex justify-start md:justify-end">
+<a class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-sm text-black bg-primary hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(0,229,255,0.3)] hover:shadow-[0_0_25px_rgba(0,229,255,0.6)] uppercase tracking-wider w-full md:w-auto group-hover:translate-x-1" href="#">
+                                Listen Live
+                                <span class="material-icons ml-2 text-lg">play_arrow</span>
+</a>
+</div>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-6 md:p-8 hover:border-primary/50 transition-all duration-300 overflow-hidden rounded-sm">
+<div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="w-full md:w-1/4">
+<span class="block text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-tight">
+                                Wednesdays
+                            </span>
+<span class="inline-block mt-1 px-2 py-0.5 text-xs font-bold bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded uppercase tracking-wider">
+                                Weekly Residency
+                            </span>
+</div>
+<div class="w-full md:w-2/4 flex flex-col gap-1 border-l-2 border-purple-500/20 pl-4 md:pl-8">
+<div class="flex items-center gap-2 text-primary font-mono text-xl md:text-2xl font-semibold">
+<span class="material-icons text-lg">schedule</span>
+                                6:00 PM – 8:00 PM CST
+                            </div>
+<p class="text-gray-500 dark:text-gray-400 font-medium tracking-wide uppercase text-sm">
+                                High Energy &amp; Neurofunk
+                            </p>
+</div>
+<div class="w-full md:w-1/4 flex justify-start md:justify-end">
+<a class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 dark:border-gray-600 text-base font-bold rounded-sm text-gray-900 dark:text-white hover:border-primary hover:text-primary transition-all duration-300 uppercase tracking-wider w-full md:w-auto group-hover:translate-x-1" href="#">
+                                Set Reminder
+                                <span class="material-icons ml-2 text-lg">notifications</span>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-300 dark:border-gray-800">
+<h3 class="text-xl font-display font-bold uppercase tracking-wider text-gray-500 dark:text-gray-500 mb-6 pl-2 border-l-4 border-primary">
+                         Upcoming Guest Mixes
+                     </h3>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 dark:border-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800/30 transition-colors px-4 rounded">
+<div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+<div class="font-mono text-primary font-bold w-32">MAR. 15, 2026</div>
+<div>
+<div class="font-display font-bold text-lg uppercase dark:text-gray-200">Bassline Sanctum</div>
+<div class="text-sm text-gray-500 uppercase tracking-wide">London, UK (Virtual)</div>
+</div>
+</div>
+<div class="mt-4 md:mt-0">
+<span class="inline-block px-3 py-1 text-xs font-bold border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 rounded-full uppercase">To Be Announced</span>
+</div>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-gray-200 dark:border-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800/30 transition-colors px-4 rounded">
+<div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-12">
+<div class="font-mono text-primary font-bold w-32">APR. 02, 2026</div>
+<div>
+<div class="font-display font-bold text-lg uppercase dark:text-gray-200">Rhythm &amp; Waves</div>
+<div class="text-sm text-gray-500 uppercase tracking-wide">Twitch Exclusive</div>
+</div>
+</div>
+<div class="mt-4 md:mt-0">
+<span class="inline-block px-3 py-1 text-xs font-bold border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 rounded-full uppercase">Pending</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+</div>
+</section>
+
+</body></html>

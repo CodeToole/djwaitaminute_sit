@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIP Dubplate Access Bento - DJWaitaminute</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&amp;family=Rajdhani:wght@400;500;600;700&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00F0FF", // Neon Electric Blue as requested
+              "background-light": "#F0F0F0",
+              "background-dark": "#050508", // Very dark, near black background
+              "panel-dark": "#0F0F13",
+              "panel-light": "#FFFFFF",
+              "accent-yellow": "#FFD700", // Sub Focus inspired gold
+              "accent-red": "#FF2A2A", // Andy C inspired red highlight
+            },
+            fontFamily: {
+              display: ["Orbitron", "sans-serif"],
+              sans: ["Space Grotesk", "sans-serif"],
+              mono: ["Rajdhani", "monospace"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+            backgroundImage: {
+                'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
+            }
+          },
+        },
+      };
+    </script>
+<style>
+        .glitch-text {
+            position: relative;
+        }
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -1px 0 #FF2A2A;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -1px 0 #00F0FF;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 94px, 0); }
+            5% { clip: rect(70px, 9999px, 11px, 0); }
+            10% { clip: rect(26px, 9999px, 88px, 0); }
+            15% { clip: rect(3px, 9999px, 93px, 0); }
+            20% { clip: rect(61px, 9999px, 53px, 0); }
+            25% { clip: rect(45px, 9999px, 12px, 0); }
+            30% { clip: rect(89px, 9999px, 56px, 0); }
+            35% { clip: rect(2px, 9999px, 9px, 0); }
+            40% { clip: rect(44px, 9999px, 78px, 0); }
+            45% { clip: rect(20px, 9999px, 20px, 0); }
+            50% { clip: rect(2px, 9999px, 2px, 0); }
+            55% { clip: rect(89px, 9999px, 32px, 0); }
+            60% { clip: rect(50px, 9999px, 86px, 0); }
+            65% { clip: rect(27px, 9999px, 85px, 0); }
+            70% { clip: rect(2px, 9999px, 40px, 0); }
+            75% { clip: rect(84px, 9999px, 69px, 0); }
+            80% { clip: rect(13px, 9999px, 39px, 0); }
+            85% { clip: rect(66px, 9999px, 80px, 0); }
+            90% { clip: rect(66px, 9999px, 90px, 0); }
+            95% { clip: rect(60px, 9999px, 3px, 0); }
+            100% { clip: rect(75px, 9999px, 8px, 0); }
+        }
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 100px, 0); }
+            5% { clip: rect(52px, 9999px, 74px, 0); }
+            10% { clip: rect(79px, 9999px, 85px, 0); }
+            15% { clip: rect(75px, 9999px, 5px, 0); }
+            20% { clip: rect(67px, 9999px, 61px, 0); }
+            25% { clip: rect(14px, 9999px, 79px, 0); }
+            30% { clip: rect(1px, 9999px, 66px, 0); }
+            35% { clip: rect(86px, 9999px, 30px, 0); }
+            40% { clip: rect(23px, 9999px, 98px, 0); }
+            45% { clip: rect(85px, 9999px, 72px, 0); }
+            50% { clip: rect(71px, 9999px, 75px, 0); }
+            55% { clip: rect(2px, 9999px, 48px, 0); }
+            60% { clip: rect(30px, 9999px, 16px, 0); }
+            65% { clip: rect(59px, 9999px, 50px, 0); }
+            70% { clip: rect(99px, 9999px, 81px, 0); }
+            75% { clip: rect(36px, 9999px, 36px, 0); }
+            80% { clip: rect(65px, 9999px, 20px, 0); }
+            85% { clip: rect(26px, 9999px, 4px, 0); }
+            90% { clip: rect(87px, 9999px, 1px, 0); }
+            95% { clip: rect(20px, 9999px, 7px, 0); }
+            100% { clip: rect(8px, 9999px, 67px, 0); }
+        }
+        .audio-wave {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 100%;
+        }
+        .bar {
+            width: 4px;
+            background: linear-gradient(to top, #00F0FF, #FFFFFF);
+            animation: bounce 1.2s infinite ease-in-out;
+            border-radius: 999px;
+        }
+        @keyframes bounce {
+            0%, 100% { height: 20%; opacity: 0.3; }
+            50% { height: 80%; opacity: 1; }
+        }
+        .bar:nth-child(odd) { animation-duration: 0.8s; }
+        .bar:nth-child(2n) { animation-duration: 1.1s; }
+        .bar:nth-child(3n) { animation-duration: 1.3s; }
+        .bar:nth-child(4n) { animation-duration: 0.9s; }
+        .bar:nth-child(5n) { animation-duration: 1.5s; }
+        .circle-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .rotating-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-top: 1px solid #00F0FF;
+            animation: spin 4s linear infinite;
+        }
+        .rotating-border-2 {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-bottom: 2px solid #FFD700;
+            animation: spin-reverse 6s linear infinite;
+        }
+        .pulsing-core {
+            width: 40%;
+            height: 40%;
+            background: radial-gradient(circle, rgba(0,240,255,0.4) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+        @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.6; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.6; } }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-6 lg:p-12 relative overflow-hidden transition-colors duration-300 font-sans selection:bg-primary selection:text-black">
+<div class="fixed inset-0 z-0 pointer-events-none opacity-40 mix-blend-overlay bg-noise"></div>
+<div class="fixed top-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-[120px] dark:bg-primary/5"></div>
+<div class="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-accent-yellow/10 rounded-full blur-[120px] dark:bg-accent-yellow/5"></div>
+</div>
+<main class="w-full max-w-7xl mx-auto z-10 relative">
+<header class="flex justify-between items-center mb-12">
+<div class="text-2xl font-display font-bold tracking-tighter uppercase text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">equalizer</span>
+<span class="glitch-text" data-text="DJWAITAMINUTE">DJWAITAMINUTE</span>
+</div>
+<nav class="hidden md:flex gap-8 text-sm font-mono tracking-widest uppercase text-gray-600 dark:text-gray-400">
+<a class="hover:text-primary transition-colors" href="#">Tour</a>
+<a class="hover:text-primary transition-colors" href="#">Music</a>
+<a class="hover:text-primary transition-colors" href="#">Merch</a>
+<a class="text-primary border-b border-primary" href="#">Access</a>
+</nav>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 auto-rows-[minmax(180px,auto)]">
+<div class="group relative col-span-1 md:col-span-2 lg:col-span-7 bg-panel-light dark:bg-panel-dark rounded-3xl p-8 lg:p-12 border border-gray-200 dark:border-gray-800 shadow-xl overflow-hidden flex flex-col justify-center">
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-primary/5 dark:to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="relative z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-red/10 border border-accent-red/20 text-accent-red text-xs font-mono font-bold tracking-widest mb-6 w-fit">
+<span class="w-2 h-2 rounded-full bg-accent-red animate-pulse"></span>
+                        VIP DUBPLATE ACCESS
+                    </div>
+<h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-black leading-[0.9] tracking-tight text-gray-900 dark:text-white mb-6 uppercase">
+                        Join The <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-500 group-hover:from-primary group-hover:to-white transition-all duration-500">Waitaminute</span> <br/>
+                        List
+                    </h1>
+<p class="text-lg text-gray-600 dark:text-gray-400 max-w-lg font-light leading-relaxed">
+                        Be the first to hear unreleased IDs, get priority access to tour tickets, and exclusive merchandise drops. No spam, just bass.
+                    </p>
+</div>
+<div class="absolute right-0 top-0 h-full w-1/3 border-l border-gray-100 dark:border-gray-800/50 opacity-50 transform skew-x-12"></div>
+<div class="absolute right-12 top-0 h-full w-px bg-gray-100 dark:bg-gray-800/50 opacity-50"></div>
+</div>
+<div class="col-span-1 md:col-span-1 lg:col-span-5 bg-black rounded-3xl relative overflow-hidden flex items-center justify-center min-h-[300px] border border-gray-800 shadow-2xl">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-900 via-black to-black"></div>
+<div class="circle-container z-10">
+<div class="rotating-border"></div>
+<div class="rotating-border-2"></div>
+<div class="pulsing-core"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-40">
+<div class="w-[90%] h-[1px] bg-primary absolute top-1/2 left-[5%] transform -translate-y-1/2"></div>
+<div class="h-[90%] w-[1px] bg-primary absolute left-1/2 top-[5%] transform -translate-x-1/2"></div>
+<span class="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-mono text-primary tracking-[0.3em]">HZ-FREQ</span>
+<span class="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] font-mono text-primary tracking-[0.3em]">SYSTEM-RDY</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-noise opacity-20 mix-blend-overlay"></div>
+</div>
+<div class="col-span-1 md:col-span-1 lg:col-span-4 bg-panel-light dark:bg-panel-dark rounded-3xl p-6 border border-gray-200 dark:border-gray-800 flex flex-col justify-between group hover:border-primary/50 transition-colors duration-300">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-600 group-hover:text-primary transition-colors">groups</span>
+<span class="text-xs font-mono text-gray-400 dark:text-gray-600">LIVE STATS</span>
+</div>
+<div>
+<div class="text-3xl font-display font-bold text-gray-900 dark:text-white mb-1">14,209</div>
+<div class="text-sm text-gray-500 dark:text-gray-400">Ravers currently on the list</div>
+</div>
+<div class="mt-4 w-full bg-gray-100 dark:bg-gray-800 h-1 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-1 lg:col-span-8 bg-panel-light dark:bg-panel-dark rounded-3xl p-8 border border-gray-200 dark:border-gray-800 flex flex-col md:flex-row gap-6 items-center justify-between relative overflow-hidden group">
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-primary/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+<div class="w-full md:w-2/3 relative">
+<label class="sr-only" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400">mail</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-gray-50 dark:bg-[#1A1A20] border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-mono tracking-wide" id="email" name="email" placeholder="ENTER YOUR EMAIL ADDRESS" type="email"/>
+</div>
+<p class="mt-2 text-xs text-gray-500 dark:text-gray-500 ml-2 font-mono flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">lock</span> 
+                        We respect your privacy. Unsubscribe anytime.
+                    </p>
+</div>
+<button class="w-full md:w-1/3 py-4 px-6 bg-primary hover:bg-cyan-300 text-black font-display font-bold text-lg rounded-xl shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+<span>GET ACCESS</span>
+<span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="hidden lg:flex col-span-3 lg:col-span-4 bg-gray-900 dark:bg-black rounded-3xl p-6 border border-gray-800 relative overflow-hidden items-end justify-between">
+<div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center grayscale mix-blend-overlay"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="relative z-10 w-full">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-mono text-primary tracking-wider uppercase">Now Playing ID</span>
+<div class="flex space-x-1">
+<div class="w-1 h-3 bg-primary animate-pulse"></div>
+<div class="w-1 h-3 bg-primary animate-pulse delay-75"></div>
+<div class="w-1 h-3 bg-primary animate-pulse delay-150"></div>
+</div>
+</div>
+<h3 class="text-white font-display font-bold text-lg truncate">SOLAR SYSTEM (VIP)</h3>
+<p class="text-gray-400 text-sm mb-4">Sub Focus</p>
+<div class="h-8 w-full flex items-end justify-between gap-1 overflow-hidden">
+<div class="audio-wave w-full">
+<div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+<div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+<div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+<div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+<div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+<div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+<div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-1 lg:col-span-4 bg-panel-light dark:bg-panel-dark rounded-3xl p-6 border border-gray-200 dark:border-gray-800 flex flex-col justify-start overflow-hidden">
+<div class="flex justify-between items-center mb-6 border-b border-gray-200 dark:border-gray-800 pb-2">
+<h3 class="font-display font-bold text-gray-900 dark:text-white text-lg">UPCOMING SHOWS</h3>
+<a class="text-xs font-mono text-primary hover:underline" href="#">VIEW ALL</a>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center group cursor-pointer">
+<div>
+<div class="text-xs font-mono text-accent-red font-bold">MAR 14</div>
+<div class="text-gray-900 dark:text-gray-200 font-bold text-sm">Printworks</div>
+<div class="text-gray-500 dark:text-gray-500 text-xs">London, UK</div>
+</div>
+<div class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:bg-accent-red group-hover:border-accent-red transition-colors">
+<span class="material-symbols-outlined text-[16px] text-gray-400 group-hover:text-white">arrow_outward</span>
+</div>
+</div>
+<div class="flex justify-between items-center group cursor-pointer">
+<div>
+<div class="text-xs font-mono text-accent-red font-bold">APR 02</div>
+<div class="text-gray-900 dark:text-gray-200 font-bold text-sm">Rampage</div>
+<div class="text-gray-500 dark:text-gray-500 text-xs">Antwerp, BE</div>
+</div>
+<div class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center group-hover:bg-accent-red group-hover:border-accent-red transition-colors">
+<span class="material-symbols-outlined text-[16px] text-gray-400 group-hover:text-white">arrow_outward</span>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden md:flex lg:col-span-4 bg-black rounded-3xl p-0 border border-gray-800 relative overflow-hidden group">
+<img alt="Crowd shot" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2cfFIiZ99eCdEIY_D1emeNxyHoxUZVZuKlkwFeHsoJPNNtJFt6UUVCpLE6PHG-aDXa8xK8qkO6cN823K5Pozd1-tTYQHrWNtZJbqzuW9967OqH3St2R19SsDrUvaT5ZE3or6zLcIGV4Jn56yzgV4oQRw7H_tPeg5NOXwGMxFIeXLDnzkoJ2dSoRHvRVHWGGubu4QFCVeXP_s4LU95epyfbNBWkWO9vtcTUe9DkrMyOgV4Q8OgY7QFWFTYaryBjr88FMGHFOh_yg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="relative z-10 p-6 w-full h-full flex flex-col justify-end items-start">
+<h3 class="text-white font-display font-bold text-2xl mb-2">COMMUNITY</h3>
+<div class="flex gap-4">
+<a class="text-white hover:text-primary transition-colors" href="#"><i class="fa-brands fa-instagram text-xl"></i></a> 
+<span class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary hover:text-black transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[16px]">photo_camera</span>
+</span>
+<span class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary hover:text-black transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+</span>
+<span class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary hover:text-black transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[16px]">music_note</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-16 border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm font-mono">
+<p>© 2024 DJWAITAMINUTE. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="hover:text-primary" href="#">PRIVACY</a>
+<a class="hover:text-primary" href="#">TERMS</a>
+<a class="hover:text-primary" href="#">MGMT</a>
+</div>
+</footer>
+</main>
+<div class="fixed bottom-10 right-10 z-50 hidden xl:block">
+<div class="w-12 h-12 border border-primary/30 rounded-full flex items-center justify-center animate-spin-slow">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+</div>
+</div>
+
+</body></html>
