@@ -1,12 +1,19 @@
-"""Welcome to Reflex! This file outlines the steps to create a basic app."""
-
+import sys
+import os
 import reflex as rx
+
+# Fix for IDE/Linter: Add project root to path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from rxconfig import config
 
 
 class State(rx.State):
     """The app state."""
+    sidebar_open: bool = False
+
+    def toggle_sidebar(self):
+        self.sidebar_open = not self.sidebar_open
 
 
 def nav_link(text: str, url: str) -> rx.Component:
@@ -26,6 +33,7 @@ def nav_link(text: str, url: str) -> rx.Component:
 def navbar() -> rx.Component:
     return rx.box(
         rx.hstack(
+            # Logo Section
             rx.hstack(
                 rx.box(
                     rx.image(
@@ -51,7 +59,10 @@ def navbar() -> rx.Component:
                 spacing="3",
                 align="center",
                 cursor="pointer",
+                on_click=rx.redirect("/"),
             ),
+            
+            # Desktop Navigation Links
             rx.hstack(
                 nav_link("Music", "/music"),
                 nav_link("Tour", "/tour"),
@@ -60,6 +71,8 @@ def navbar() -> rx.Component:
                 spacing="8",
                 display=["none", "none", "flex"],
             ),
+            
+            # Desktop Subscribe Button
             rx.link(
                 rx.button(
                     "Subscribe",
@@ -85,6 +98,19 @@ def navbar() -> rx.Component:
                 is_external=True,
                 display=["none", "none", "flex"],
             ),
+            
+            # Mobile Menu Toggle (Hamburger)
+            rx.text(
+                "menu",
+                class_name="material-symbols-outlined",
+                font_size="2rem",
+                color="white",
+                display=["flex", "flex", "none"],
+                cursor="pointer",
+                on_click=State.toggle_sidebar,
+                _hover={"color": "#00F0FF"},
+            ),
+            
             justify="between",
             align="center",
             max_width="80rem",
@@ -92,6 +118,64 @@ def navbar() -> rx.Component:
             padding_x="4",
             height="5rem",
         ),
+        
+        # Mobile Menu Overlay (Drawer-like)
+        rx.box(
+            rx.vstack(
+                rx.hstack(
+                    rx.spacer(),
+                    rx.text(
+                        "close",
+                        class_name="material-symbols-outlined",
+                        font_size="2rem",
+                        color="white",
+                        cursor="pointer",
+                        on_click=State.toggle_sidebar,
+                        _hover={"color": "#00F0FF"},
+                        margin="4",
+                    ),
+                    width="100%",
+                ),
+                rx.vstack(
+                    rx.link("Music", href="/music", on_click=State.toggle_sidebar, color="white", font_family="Orbitron", font_size="1.5rem", font_weight="700", _hover={"color": "#00F0FF"}),
+                    rx.link("Tour", href="/tour", on_click=State.toggle_sidebar, color="white", font_family="Orbitron", font_size="1.5rem", font_weight="700", _hover={"color": "#00F0FF"}),
+                    rx.link("Merch", href="/", on_click=State.toggle_sidebar, color="white", font_family="Orbitron", font_size="1.5rem", font_weight="700", _hover={"color": "#00F0FF"}),
+                    rx.link("About", href="/#about", on_click=State.toggle_sidebar, color="white", font_family="Orbitron", font_size="1.5rem", font_weight="700", _hover={"color": "#00F0FF"}),
+                    rx.link(
+                        rx.button(
+                            "Subscribe",
+                            bg="#00F0FF",
+                            color="black",
+                            font_family="Orbitron",
+                            padding_x="8",
+                            width="100%",
+                            border_radius="0",
+                        ),
+                        href="https://www.youtube.com/@djwaitaminute84",
+                        is_external=True,
+                        width="80%",
+                        margin_top="8",
+                    ),
+                    spacing="8",
+                    padding_top="8",
+                    align="center",
+                    width="100%",
+                ),
+                height="100%",
+                width="100%",
+            ),
+            position="fixed",
+            right="0",
+            top="0",
+            width="100%",
+            height="100vh",
+            bg="rgba(5, 5, 8, 0.98)",
+            backdrop_filter="blur(12px)",
+            z_index="1000",
+            display=rx.cond(State.sidebar_open, "block", "none"),
+            transition="all 0.3s ease-in-out",
+        ),
+        
         width="100%",
         position="fixed",
         top="0",
@@ -357,18 +441,21 @@ def index() -> rx.Component:
                     margin_bottom="6",
                 ),
                 # Central Mascot (Visual Anchor)
-                rx.box(
-                    rx.image(
-                        src="/mascot.png",
-                        width=["12rem", "16rem", "20rem"],
-                        height="auto",
+                rx.center(
+                    rx.box(
+                        rx.image(
+                            src="/mascot.png",
+                            width=["12rem", "16rem", "20rem"],
+                            height="auto",
+                            transition="all 0.5s",
+                            filter="drop-shadow(0 0 20px rgba(0, 240, 255, 0.3))",
+                        ),
+                        _hover={"transform": "scale(1.05)", "filter": "drop-shadow(0 0 30px rgba(0, 240, 255, 0.5))"},
                         transition="all 0.5s",
-                        filter="drop-shadow(0 0 20px rgba(0, 240, 255, 0.3))",
+                        class_name="animate-glitch",
                     ),
+                    width="100%",
                     margin_bottom="4",
-                    _hover={"transform": "scale(1.05)", "filter": "drop-shadow(0 0 30px rgba(0, 240, 255, 0.5))"},
-                    transition="all 0.5s",
-                    class_name="animate-glitch",
                 ),
                 # Heading
                 rx.heading(
@@ -1206,6 +1293,7 @@ app = rx.App(
         "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0",
         "/style.css",
     ],
+    overlay_component=rx.fragment(),
 )
 app.add_page(index)
 app.add_page(tour, route="/tour")
