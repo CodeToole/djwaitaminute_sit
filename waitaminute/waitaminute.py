@@ -10,10 +10,7 @@ from rxconfig import config
 
 class State(rx.State):
     """The app state."""
-    sidebar_open: bool = False
-
-    def toggle_sidebar(self):
-        self.sidebar_open = not self.sidebar_open
+    pass
 
 
 def nav_link(text: str, url: str) -> rx.Component:
@@ -32,7 +29,7 @@ def nav_link(text: str, url: str) -> rx.Component:
 
 def navbar() -> rx.Component:
     return rx.box(
-        rx.hstack(
+        rx.flex(
             # Logo Section
             rx.hstack(
                 rx.box(
@@ -62,118 +59,52 @@ def navbar() -> rx.Component:
                 on_click=rx.redirect("/"),
             ),
             
-            # Desktop Navigation Links
-            rx.hstack(
+            # Navigation Links & Subscribe Button
+            rx.flex(
                 nav_link("Music", "/music"),
                 nav_link("Tour", "/tour"),
                 nav_link("Merch", "/"),
                 nav_link("About", "/#about"),
-                spacing="8",
-                display=["none", "none", "flex"],
-            ),
-            
-            # Desktop Subscribe Button
-            rx.link(
-                rx.button(
-                    "Subscribe",
-                    variant="outline",
-                    font_family="Orbitron",
-                    font_size="0.875rem",
-                    font_weight="700",
-                    text_transform="uppercase",
-                    letter_spacing="0.1em",
-                    color="white",
-                    border_color="white",
-                    _hover={
-                        "bg": "#00F0FF",
-                        "color": "black",
-                        "border_color": "#00F0FF",
-                        "box_shadow": "0 0 15px rgba(0, 240, 255, 0.5)",
-                    },
-                    transition="all 0.3s",
-                    padding_x="6",
-                    border_radius="0",
+                rx.link(
+                    rx.button(
+                        "Subscribe",
+                        variant="outline",
+                        font_family="Orbitron",
+                        font_size=["0.75rem", "0.875rem"],
+                        font_weight="700",
+                        text_transform="uppercase",
+                        letter_spacing="0.1em",
+                        color="white",
+                        border_color="white",
+                        _hover={
+                            "bg": "#00F0FF",
+                            "color": "black",
+                            "border_color": "#00F0FF",
+                            "box_shadow": "0 0 15px rgba(0, 240, 255, 0.5)",
+                        },
+                        transition="all 0.3s",
+                        padding_x=["4", "6"],
+                        border_radius="0",
+                    ),
+                    href="https://www.youtube.com/@djwaitaminute84",
+                    is_external=True,
                 ),
-                href="https://www.youtube.com/@djwaitaminute84",
-                is_external=True,
-                display=["none", "none", "flex"],
-            ),
-            
-            # Mobile Menu Toggle (Hamburger)
-            rx.text(
-                "menu",
-                class_name="material-symbols-outlined",
-                font_size="2rem",
-                color="white",
-                display=["flex", "flex", "none"],
-                cursor="pointer",
-                on_click=State.toggle_sidebar,
-                _hover={"color": "#00F0FF"},
+                gap=["3", "4", "8"],
+                align="center",
+                justify="center",
+                flex_wrap="wrap",
+                margin_top=["4", "4", "0"],
             ),
             
             justify="between",
             align="center",
+            flex_direction=["column", "column", "row"],
             max_width="80rem",
             margin_x="auto",
             padding_x="4",
-            height="5rem",
-        ),
-        
-        # Mobile Menu Overlay (Drawer-like)
-        rx.box(
-            rx.vstack(
-                rx.hstack(
-                    rx.spacer(),
-                    rx.text(
-                        "close",
-                        class_name="material-symbols-outlined",
-                        font_size="2rem",
-                        color="white",
-                        cursor="pointer",
-                        on_click=State.toggle_sidebar,
-                        _hover={"color": "#00F0FF"},
-                        margin="4",
-                    ),
-                    width="100%",
-                ),
-                rx.vstack(
-                    rx.link("Music", href="/music", on_click=State.toggle_sidebar, color="white", font_family="Orbitron", font_size="1.5rem", font_weight="700", _hover={"color": "#00F0FF"}),
-                    rx.link("Tour", href="/tour", on_click=State.toggle_sidebar, color="white", font_family="Orbitron", font_size="1.5rem", font_weight="700", _hover={"color": "#00F0FF"}),
-                    rx.link("Merch", href="/", on_click=State.toggle_sidebar, color="white", font_family="Orbitron", font_size="1.5rem", font_weight="700", _hover={"color": "#00F0FF"}),
-                    rx.link("About", href="/#about", on_click=State.toggle_sidebar, color="white", font_family="Orbitron", font_size="1.5rem", font_weight="700", _hover={"color": "#00F0FF"}),
-                    rx.link(
-                        rx.button(
-                            "Subscribe",
-                            bg="#00F0FF",
-                            color="black",
-                            font_family="Orbitron",
-                            padding_x="8",
-                            width="100%",
-                            border_radius="0",
-                        ),
-                        href="https://www.youtube.com/@djwaitaminute84",
-                        is_external=True,
-                        width="80%",
-                        margin_top="8",
-                    ),
-                    spacing="8",
-                    padding_top="8",
-                    align="center",
-                    width="100%",
-                ),
-                height="100%",
-                width="100%",
-            ),
-            position="fixed",
-            right="0",
-            top="0",
+            padding_y="4",
+            min_height="5rem",
             width="100%",
-            height="100vh",
-            bg="rgba(5, 5, 8, 0.98)",
-            backdrop_filter="blur(12px)",
-            z_index="1000",
-            display=rx.cond(State.sidebar_open, "block", "none"),
-            transition="all 0.3s ease-in-out",
         ),
         
         width="100%",
